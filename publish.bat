@@ -5,3 +5,4 @@ tsc
 echo f |xcopy package.json dist\package.json
 cd dist
 npm publish --access public
+pause

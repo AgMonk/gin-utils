@@ -56,14 +56,6 @@ const unicodeRanges: UnicodeRange[] = [
     new UnicodeRange("ko", ["1100-11FF", "3130-318F", "AC00-D7AF"]),
 ]
 
-interface Language {
-    cn: number;
-    ko: number;
-    jp: number;
-    en: number;
-    unknown: number;
-}
-
 export class StringUtils {
     /**
      * 反转义

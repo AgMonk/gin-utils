@@ -1,0 +1,19 @@
+{
+  "name": "gin-utils",
+  "version": "1.0.0",
+  "description": "gin-utils",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utils",
+    "gin"
+  ],
+  "author": "gin",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.8.4"
+  }
+}

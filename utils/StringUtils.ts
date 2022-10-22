@@ -56,4 +56,25 @@ export class StringUtils {
             })
         return {protocol, host, href: fullUrl, path, query,}
     }
+    /**
+     * 解码unicode 各语言范围: https://baike.baidu.com/item/%E7%BB%9F%E4%B8%80%E7%A0%81/2985798
+     * @param str 字符串
+     */
+    static decodeUnicode = function (str: string): string {
+        return str.replace(/&#(x)?([^&]{1,5});?/g, function ($, $1, $2) {
+            return String.fromCharCode(parseInt($2, $1 ? 16 : 10));
+        });
+    }
+    /**
+     * 编码unicode
+     * @param str 字符串
+     * @param radix 是否转换为16进制
+     */
+    static encodeUnicode = function (str: string,radix?:16|10): string {
+        let s = "";
+        for (let i = 0; i < str.length; i++) {
+            s += `&#${radix===16?'x':''}${str.charCodeAt(i).toString(radix)};`
+        }
+        return s;
+    }
 }

@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "scripts": {
+    "ver": "npm version patch",
     "git": "git add . && git commit -m \"publish to npm\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -41,13 +41,13 @@ export class DateUtils {
      */
     static format = function (date: Date, fmt?: string): string {
         fmt = fmt ? fmt : "yyyy-MM-dd hh:mm:ss";
-        type group = {
+        type Group = {
             pattern: RegExp
             value: string
             name: string
         }
 
-        let groups: Array<group> = [
+        let groups: Group[] = [
             {pattern: /(y{1,4})/, value: date.getFullYear() + "", name: '年'},
             {pattern: /(M{1,2})/, value: date.getMonth() + 1 + "", name: '月'},
             {pattern: /(d{1,2})/, value: date.getDate() + "", name: '日'},

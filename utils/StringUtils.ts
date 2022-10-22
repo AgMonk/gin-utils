@@ -8,7 +8,7 @@ export interface Url {
 
 export interface Query {
     key: string
-    value: string | string[]
+    value: string | number | Array<string | number>
 }
 
 export class StringUtils {
@@ -34,20 +34,24 @@ export class StringUtils {
         let path = url.substring(url.indexOf("/"))
 
         let query: Query[] = []
+        let parseValue = function (value: string): string | number {
+            return isNaN(Number(value)) ? value : Number(value);
+        }
+
         search.split("&")
-            .forEach(item=>{
-                const [key,value] = item.split("=");
-                if (key.endsWith("[]")){
+            .forEach(item => {
+                const [key, value] = item.split("=");
+                if (key.endsWith("[]")) {
                     //如果以[]结尾，认为是重复参数，查询可能存在的组
-                    let dest = query.filter(i=>i.key===key)[0];
+                    let dest = query.filter(i => i.key === key)[0];
                     if (dest) {
-                        (<string[]>dest.value).push(value)
-                    }else{
-                        query.push({key,value:[value]})
+                        (<Array<string | number>>dest.value).push(value)
+                    } else {
+                        query.push({key, value: [parseValue(value)]})
                     }
-                }else{
+                } else {
                     //独立参数，直接添加
-                    query.push({key,value})
+                    query.push({key, value: parseValue(value)})
                 }
             })
         return {protocol, host, href: fullUrl, path, query,}

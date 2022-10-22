@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "scripts": {
-    "ver": "git add . && git commit -m \"publish to npm\" && npm version patch && echo f|xcopy package.json dist\\package.json /Y",
+    "pub": "echo f|xcopy package.json dist\\package.json /Y && cd dist && npm publish --access public",
+    "ver": "git add . && git commit -m \"publish to npm\" && npm version patch ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

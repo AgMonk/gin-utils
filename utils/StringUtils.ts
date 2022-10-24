@@ -115,7 +115,7 @@ export class StringUtils {
      * @param str 字符串
      * @param radix 是否转换为16进制
      */
-    static encodeUnicode = function (str: string, radix?: 16 | 10): string {
+    static encodeUnicode = function (str: string, radix = 10): string {
         let s = "";
         for (let i = 0; i < str.length; i++) {
             s += `&#${radix === 16 ? 'x' : ''}${str.charCodeAt(i).toString(radix)};`
@@ -130,7 +130,7 @@ export class StringUtils {
         for (let i = 0; i < unicodeRanges.length; i++) {
             let item = unicodeRanges[i]
             let parse = item.parse(str);
-            if (parse){
+            if (parse) {
                 return parse;
             }
         }

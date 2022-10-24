@@ -39,8 +39,7 @@ export class DateUtils {
      * @param date 日期
      * @param fmt 格式 "yyyy-MM-dd" 等，默认为 "yyyy-MM-dd hh:mm:ss"
      */
-    static format = function (date: Date, fmt?: string): string {
-        fmt = fmt ? fmt : "yyyy-MM-dd hh:mm:ss";
+    static format = function (date: Date, fmt= "yyyy-MM-dd hh:mm:ss"): string {
         type Group = {
             pattern: RegExp
             value: string

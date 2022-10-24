@@ -1,16 +1,27 @@
 // document工具类
 
-export class DomUtils {
-    //获取屏幕信息，客户端宽度，滚动位置
-    static getScreenInfo() {
-        const {body} = document
-        const {clientWidth, clientHeight, clientLeft, clientTop, scrollWidth, scrollHeight} = body
+export interface ScreenInfo {
+    clientInfo: { clientWidth: number, clientHeight: number, clientLeft: number, clientTop: number },
+    scrollInfo: { scrollWidth: number, scrollHeight: number }
+}
 
+export class DomUtils {
+    private static screenInfo(body:HTMLElement){
+        const {clientWidth, clientHeight, clientLeft, clientTop, scrollWidth, scrollHeight} = body
         const clientInfo = {clientWidth, clientHeight, clientLeft, clientTop}
         const scrollInfo = {scrollWidth, scrollHeight}
-
         return {clientInfo, scrollInfo};
     }
+
+    //获取屏幕信息，客户端宽度，滚动位置
+    static getScreenInfo(): { body:ScreenInfo,documentElement:ScreenInfo } {
+        const {body,documentElement} = document
+        return {
+            body:DomUtils.screenInfo(body),
+            documentElement:DomUtils.screenInfo(documentElement),
+        }
+    }
+
     /**
      * 滚动y轴
      * @param y 距离

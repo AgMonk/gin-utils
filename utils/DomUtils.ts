@@ -1,6 +1,6 @@
 // document工具类
 
-import {InsertParam} from "./StringUtils";
+import {InsertParam, StringUtils} from "./StringUtils";
 
 export interface ScreenInfo {
     clientInfo: { clientWidth: number, clientHeight: number, clientLeft: number, clientTop: number },
@@ -66,5 +66,23 @@ export class TextAreaUtils {
             textarea.selectionStart = start
             textarea.selectionEnd = end || start
         }, 50)
+    }
+
+    /**
+     * 向一个文本框中光标当前位置插入文本
+     * @param textarea textarea
+     * @param sourceText 原文本
+     * @param prefix 前缀
+     * @param suffix 后缀
+     * @param callback 拼接完成后的操作(一般为更新绑定的值)
+     */
+    static insertText(textarea: HTMLTextAreaElement, {sourceText = textarea.value, prefix, suffix, callback}
+        : { sourceText?: string, prefix: string, suffix?: string, callback: (result: string, position: number[]) => void }) {
+        const {position, result} = StringUtils.insertText({
+            sourceText, prefix, suffix,
+            start: textarea.selectionStart, end: textarea.selectionEnd
+        })
+        callback(result, position)
+        TextAreaUtils.select(textarea, position[1], position[2])
     }
 }

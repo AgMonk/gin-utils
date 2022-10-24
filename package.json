@@ -1,6 +1,6 @@
 {
   "name": "gin-utils",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "gin-utils",
   "main": "dist/index.js",
   "types": "dist/index.d.js",

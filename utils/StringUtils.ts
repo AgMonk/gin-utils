@@ -136,4 +136,37 @@ export class StringUtils {
         }
         return "other";
     }
+
+    /**
+     * 向字符串的指定位置插入文本
+     * @param sourceText 原字符串
+     * @param suffix 后缀
+     * @param prefix 前缀
+     * @param start 开始位置
+     * @param end 结束位置，不传表示只在start位置插入prefix+suffix，传递表示用prefix和suffix包裹之前在start和end中间的内容
+     */
+    static insertText({sourceText, suffix, prefix, start, end}: InsertParam): { result: string, position: number[] } {
+        // start 和 end 中间的字符串
+        const innerText = end ? sourceText.substring(start, end) : ""
+        // start 之前的字符串
+        const beforeStart = sourceText.substring(0, start)
+        // end 之后的字符串 如果 没有end 则为start之后的字符串
+        const afterEnd = end ? sourceText.substring(end) : sourceText.substring(start)
+        // 拼接好的字符串
+        const result = beforeStart + prefix + innerText + (suffix || "") + afterEnd;
+        // 以此为上一行的4个拼接点(+号)的位置
+        const i1 = start + prefix.length;
+        const i2 = i1 + innerText.length
+        const i3 = i2 + (suffix ? suffix.length : 0)
+        const position = [start, i1, i2, i3]
+        return {result, position};
+    }
+}
+
+export interface InsertParam {
+    sourceText: string
+    prefix: string
+    suffix?: string
+    start: number
+    end?: number
 }

@@ -1,12 +1,14 @@
 // document工具类
 
+import {InsertParam} from "./StringUtils";
+
 export interface ScreenInfo {
     clientInfo: { clientWidth: number, clientHeight: number, clientLeft: number, clientTop: number },
     scrollInfo: { scrollWidth: number, scrollHeight: number }
 }
 
 export class DomUtils {
-    private static screenInfo(body:HTMLElement){
+    private static screenInfo(body: HTMLElement) {
         const {clientWidth, clientHeight, clientLeft, clientTop, scrollWidth, scrollHeight} = body
         const clientInfo = {clientWidth, clientHeight, clientLeft, clientTop}
         const scrollInfo = {scrollWidth, scrollHeight}
@@ -14,11 +16,11 @@ export class DomUtils {
     }
 
     //获取屏幕信息，客户端宽度，滚动位置
-    static getScreenInfo(): { body:ScreenInfo,documentElement:ScreenInfo } {
-        const {body,documentElement} = document
+    static getScreenInfo(): { body: ScreenInfo, documentElement: ScreenInfo } {
+        const {body, documentElement} = document
         return {
-            body:DomUtils.screenInfo(body),
-            documentElement:DomUtils.screenInfo(documentElement),
+            body: DomUtils.screenInfo(body),
+            documentElement: DomUtils.screenInfo(documentElement),
         }
     }
 
@@ -45,5 +47,24 @@ export class DomUtils {
     static scrollYToTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+}
+
+/**
+ * 文本框工具类
+ */
+export class TextAreaUtils {
+    /**
+     * 使一个textarea获得焦点，并选中指定位置的文字
+     * @param textarea textarea
+     * @param start 开始位置
+     * @param end 结束位置
+     */
+    static select(textarea: HTMLTextAreaElement, start: number, end?: number) {
+        textarea.focus()
+        setTimeout(() => {
+            textarea.selectionStart = start
+            textarea.selectionEnd = end || start
+        }, 50)
     }
 }

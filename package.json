@@ -1,11 +1,11 @@
 {
   "name": "gin-utils",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "gin-utils",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "scripts": {
-    "pub": "echo f|xcopy package.json dist\\package.json /Y && echo d|xcopy css dist\\css /Y && cd dist && npm publish --access public && cd.. && rmdir dist /s /q",
+    "pub": "echo f|xcopy package.json dist\\package.json /Y && echo f|xcopy README.md dist\\README.md /Y && echo d|xcopy css dist\\css /Y && cd dist && npm publish --access public && cd.. && rmdir dist /s /q",
     "ver": "git add . && git commit -m \"publish to npm\" && npm version patch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

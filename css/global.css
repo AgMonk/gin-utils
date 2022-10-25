@@ -1,0 +1,66 @@
+.el-main {
+    --el-main-padding: 0px;
+    display: block;
+    flex: 1;
+    flex-basis: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: var(--el-main-padding);
+}
+
+.el-header {
+    --el-header-padding: 0 0px;
+    --el-header-height: 60px;
+    /*padding: var(--el-header-padding);*/
+    box-sizing: border-box;
+    flex-shrink: 0;
+    height: var(--el-header-height);
+}
+.el-footer {
+    --el-footer-padding: 0 0px;
+    --el-footer-height: 60px;
+    /*padding: var(--el-footer-padding);*/
+    box-sizing: border-box;
+    flex-shrink: 0;
+    height: var(--el-footer-height);
+}
+.el-tabs__item.is-active {
+    color: #87fa87;
+}
+.el-tabs__item {
+    color: #a18e6d;
+}
+
+.common-text {
+    color: hsla(0, 0%, 100%, .39)
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+#app {
+    /*background-color: #8fbff3;*/
+    background-color: #2c3e50;
+}
+
+.el-dialog {
+    /*background-color: #8fbff3;*/
+    background-color: #2c3e50;
+}
+
+.el-dialog__title {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.router-link-active {
+    text-decoration: none;
+}
+
+.des-label {
+    min-width: 80px
+}

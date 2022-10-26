@@ -1,9 +1,9 @@
 {
   "name": "gin-utils",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "description": "gin-utils",
-  "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "main": "index.js",
+  "types": "index.d.js",
   "scripts": {
     "pub": "echo f|xcopy package.json dist\\package.json /Y && echo f|xcopy README.md dist\\README.md /Y && echo d|xcopy css dist\\css /Y && cd dist && npm publish --access public && cd.. && rmdir dist /s /q",
     "ver": "git add . && git commit -m \"publish to npm\" && npm version patch",

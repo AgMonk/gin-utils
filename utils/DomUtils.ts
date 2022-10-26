@@ -86,3 +86,14 @@ export class TextAreaUtils {
         TextAreaUtils.select(textarea, position[1], position[2])
     }
 }
+
+export class Title {
+    static suffix = "";
+    static prefix = "";
+
+    static set(text: string) {
+        const p = Title.prefix ? `${Title.prefix} - ` : ''
+        const s = Title.suffix ? ` - ${Title.suffix}` : ''
+        document.title = p + text + s;
+    }
+}

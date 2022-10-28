@@ -28,14 +28,14 @@ export class CacheUtils {
         //如果缓存数据不存在，或者是强制模式，或者缓存已不可用
         if (!cache || force || !(usable(cache))) {
             return requestMethod().then(res => {
-                console.log(`保存缓存数据: key = ${key}`, res)
+                console.debug(`保存缓存数据: key = ${key}`, res)
                 caches.set(key, encode(res));
                 return res;
             })
         }
         //否则取缓存数据返回
         const res = decode(cache);
-        console.log(`读取缓存数据: key = ${key}`, res)
+        console.debug(`读取缓存数据: key = ${key}`, res)
         return new Promise((r) => r(res));
     }
     /**

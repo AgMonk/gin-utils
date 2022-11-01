@@ -7,7 +7,7 @@ export class DateUtils {
     static plusDays = function (date: Date, day: number): Date {
         return DateUtils.plusHours(date, 24 * day)
     }
-/**
+    /**
      * 从给定时间增加小时
      * @param date 日期
      * @param hour 小时
@@ -16,7 +16,7 @@ export class DateUtils {
         return DateUtils.plusMinutes(date, 60 * hour)
     }
 
-/**
+    /**
      * 从给定时间增加分钟
      * @param date 日期
      * @param minute 分钟
@@ -39,7 +39,7 @@ export class DateUtils {
      * @param date 日期
      * @param fmt 格式 "yyyy-MM-dd" 等，默认为 "yyyy-MM-dd hh:mm:ss"
      */
-    static format = function (date: Date, fmt= "yyyy-MM-dd hh:mm:ss"): string {
+    static format = function (date: Date, fmt = "yyyy-MM-dd hh:mm:ss"): string {
         type Group = {
             pattern: RegExp
             value: string
@@ -83,4 +83,13 @@ export class DateUtils {
         }
         return fmt;
     };
+    /**
+     * 修改时区
+     * @param date 日期对象
+     * @param zone 时区：-12 ~ 12
+     */
+    static withZone = function (date: Date, zone: number): Date {
+        let offset = zone * 60 + date.getTimezoneOffset();
+        return DateUtils.plusMinutes(date,offset);
+    }
 }

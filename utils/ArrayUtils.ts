@@ -4,7 +4,7 @@ export class ArrayUtils {
      * @param source 来源数组
      * @param getHash 根据数组成员生成唯一编号的方法
      */
-    distinct(source: Array<any>,getHash:(item: any)=>string): Array<any> {
+    static distinct(source: Array<any>,getHash:(item: any)=>string): Array<any> {
         let map = new Map<string,any>();
         source.forEach(item=>{
             let hash = getHash(item);

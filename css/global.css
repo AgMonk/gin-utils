@@ -64,3 +64,11 @@ a {
 .des-label {
     min-width: 80px
 }
+
+
+/*横纵居中定位*/
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

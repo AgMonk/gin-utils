@@ -72,3 +72,24 @@ a {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+.gin-scrollbar {
+    overflow: auto;
+}
+
+.gin-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gin-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgb(127, 188, 232);
+}
+
+.gin-scrollbar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.07);
+}

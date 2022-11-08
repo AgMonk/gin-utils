@@ -80,6 +80,7 @@ a {
 
 .gin-scrollbar::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 .gin-scrollbar::-webkit-scrollbar-thumb {
